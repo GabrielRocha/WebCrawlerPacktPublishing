@@ -10,6 +10,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 .idea
+.packt_user.cfg
 env/
 build/
 develop-eggs/
