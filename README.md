@@ -18,7 +18,7 @@ Adicionar no arquivo oculto **.packt_user.cfg**
 
 Modificar a permissão do arquivo **.packt_user.cfg**, para que somente o usuário tenha acesso.
 ```
-$ chmod 760 .conf
+$ chmod 760 .packt_user.cfg
 ```
 
 Executar o script
@@ -28,4 +28,11 @@ $ python packt_crawler.py
 ```
 
 ### Cron
-echo "*/1 * * * * root /path_do_projeto/packt_crawler.py" > /etc/cron.d/packt_crawler
+```
+# echo "* * * * * root python /path_do_repositorio/WebCrawlerPacktPublishing/packt_crawler.py" > /etc/daily/packt_crawler
+```
+
+#### Verificar execução
+```
+$ grep CRON /var/log/syslog
+```
