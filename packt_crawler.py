@@ -13,7 +13,7 @@ class PacktFreeLearningCrawler(object):
 
     def __init__(self, url=None):
         self.url = 'https://www.packtpub.com/packt/offers/free-learning' if not url else url
-        self.soup = BeautifulSoup(urllib.urlopen(self.url).read(), 'html.parser')
+        self.soup = BeautifulSoup(urllib.request.urlopen(self.url).read(), 'html.parser')
         self.user, self.password = self._read_conf_file()
         self.create_session()
 
@@ -60,6 +60,6 @@ class PacktFreeLearningCrawler(object):
 if __name__ == '__main__':
     packt = PacktFreeLearningCrawler()
     if packt.claim_free_book() == 200:
-        print "Livro já adicionado!"
+        print("Livro já adicionado!")
     else:
-        print "Erro ao adicionar o livro"
+        print ("Erro ao adicionar o livro")
