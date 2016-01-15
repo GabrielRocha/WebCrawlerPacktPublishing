@@ -1,14 +1,17 @@
-import unittest
 from packt_crawler import PacktFreeLearningCrawler
+import unittest
+import os
+
+BASE_DIR = os.path.dirname(__file__)
 
 class Test_pack_crawler(unittest.TestCase):
 
     def setUp(self):
         '''Inserir o usuario e senha cadastrados no packtpub '''
-        self.pack = PacktFreeLearningCrawler('PACKT_Books.html')
+        self.pack = PacktFreeLearningCrawler('file://{}/PACKT_Books.html'.format(BASE_DIR))
 
     def test__read_conf_file(self):
-        self.assertIn('gabriel.rocha.gbr@gmail.com\n',self.pack._read_conf_file())
+        self.assertEquals(len(self.pack._read_conf_file()), 2)
 
     def test__clear_element(self):
         string = "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tHeroku Cookbook\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
