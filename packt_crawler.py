@@ -22,7 +22,7 @@ class PacktFreeLearningCrawler(object):
         self.create_session()
 
     def _read_conf_file(self):
-        with open("{}/.packt_user.cfg".format(BASE_DIR)) as conf:
+        with open(os.path.join(BASE_DIR, ".packt_user.cfg")) as conf:
             return conf.readlines()[:2]
 
     def create_session(self):
