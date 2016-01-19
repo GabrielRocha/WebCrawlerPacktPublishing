@@ -49,7 +49,7 @@ class PacktFreeLearningCrawler(object):
             books = my_ebooks.find(id='product-account-list').find_all('div', {'class': 'product-line unseen'})
             return [book['title'].replace(' [eBook]', "") for book in books]
         except:
-            raise ValueError("Usuário/Senha incorretos")
+            raise ValueError("Login or Passowrd is incorrect")
 
 
     def link_free_book(self):
@@ -64,6 +64,6 @@ class PacktFreeLearningCrawler(object):
 if __name__ == '__main__':
     packt = PacktFreeLearningCrawler()
     if packt.claim_free_book() == 200:
-        print ("Livro já adicionado!")
+        print ("Book already added!")
     else:
-        print ("Erro ao adicionar o livro")
+        print ("Error in adding the book")

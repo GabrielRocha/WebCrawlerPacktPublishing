@@ -1,27 +1,27 @@
 ## Web Crawler Packt Publishing
 
-Web Crawler para verficar se o usuário já tem o livro grátis do dia do [Packt Publishing] e caso não tenha 
-o mesmo é adicionado automaticamente.
+This Web Crawler is to check if the user already has the Free Book Day [Packt Publishing] and if you have not it is added automatically.
 
 [Packt Publishing]:https://www.packtpub.com/packt/offers/free-learning
 
- 
-### Instalação
+
+### Installation
 $ pip install -r requirements.txt
 
-### Execução
-Adicionar no arquivo oculto **.packt_user.cfg**
+### Execution
+Add your user and password of PacktPublishing in the hidden file **.packt_user.cfg**
 
-1º Linha => USUÁRIO
 
-2º Linha => SENHA
+1º line => User
 
-Modificar a permissão do arquivo **.packt_user.cfg**, para que somente o usuário tenha acesso.
+2º line => Password
+
+Modify permission of file **.packt_user.cfg**, to only that user have acess.
 ```
 $ chmod 760 .packt_user.cfg
 ```
 
-Executar o script
+To run script
 
 ```
 $ python packt_crawler.py
@@ -32,7 +32,7 @@ $ python packt_crawler.py
 # echo "* * * * * root python /path_do_repositorio/WebCrawlerPacktPublishing/packt_crawler.py" > /etc/daily/packt_crawler
 ```
 
-#### Verificar execução
+#### Verify execution
 ```
 $ grep CRON /var/log/syslog
 ```
