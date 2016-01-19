@@ -6,15 +6,18 @@ This Web Crawler is to check if the user already has the Free Book Day [Packt Pu
 
 
 ### Installation
+
+```
 $ pip install -r requirements.txt
+```
 
 ### Execution
-Add your user and password of PacktPublishing in the hidden file **.packt_user.cfg**
+Create a hidden file named **.packt_user.cfg** and add your credentials to PacktPublishing following the example:
 
-
-1º line => User
-
-2º line => Password
+```
+username
+password
+```
 
 Modify permission of file **.packt_user.cfg**, to only that user have acess.
 ```
