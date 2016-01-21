@@ -1,10 +1,10 @@
 #! -*- coding: UTF-8 -*-
-from datetime import datetime
 from bs4 import BeautifulSoup
 import requests
+import sys
+from log import write_log
 import re
 import os
-import sys
 if sys.version_info.major >= 3:
     from urllib.request import urlopen
 else:
@@ -12,12 +12,6 @@ else:
 
 BASE_DIR = os.path.dirname(__file__)
 
-def write_log(result):
-    title, status = result
-    with open(os.path.join(BASE_DIR, "log"), "a+") as log:
-            log.write("{date} -- Book: {title} -- Status: {status}\n".format(date=datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
-                                                                             title=title,
-                                                                             status=status))
 
 class PacktFreeLearningCrawler(object):
 
@@ -71,6 +65,6 @@ class PacktFreeLearningCrawler(object):
 if __name__ == '__main__':
     packt = PacktFreeLearningCrawler()
     if packt.claim_free_book() == 200:
-        write_log([packt.free_book_title(), "Added"])
+        write_log(BASE_DIR, title=packt.free_book_title(), status="Added")
     else:
-        write_log([packt.free_book_title(), "Error in adding the book"])
+        write_log(BASE_DIR, title=packt.free_book_title(), status="Error in adding the book")

@@ -1,4 +1,4 @@
-from packt_crawler import PacktFreeLearningCrawler
+from packt_crawler import PacktFreeLearningCrawler, write_log
 import unittest
 import os
 
@@ -29,3 +29,4 @@ class Test_pack_crawler(unittest.TestCase):
 
     def test_claim_free_book(self):
         self.assertEqual(self.pack.claim_free_book(), 200)
+
