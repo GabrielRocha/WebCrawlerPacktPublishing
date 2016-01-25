@@ -5,12 +5,13 @@ import sys
 from log import write_log
 import re
 import os
+
 if sys.version_info.major >= 3:
     from urllib.request import urlopen
 else:
     from urllib import urlopen
 
-BASE_DIR = os.path.dirname(__file__)
+BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
 
 class PacktFreeLearningCrawler(object):
@@ -51,7 +52,6 @@ class PacktFreeLearningCrawler(object):
             return [book['title'].replace(' [eBook]', "") for book in books]
         except:
             raise ValueError("Login or Passowrd is incorrect")
-
 
     def link_free_book(self):
         clain_book_input = self.soup.find('div', {'class': 'dotd-main-book-form cf'})
