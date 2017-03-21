@@ -5,12 +5,14 @@ import sys
 from log import write_log
 import re
 import os
+
 if sys.version_info.major >= 3:
     from urllib.request import urlopen
 else:
     from urllib import urlopen
 
-BASE_DIR = os.path.dirname(__file__)
+BASE_DIRS = [os.path.dirname(os.path.realpath(__file__)), 
+             os.path.expanduser("~")]
 
 
 class PacktFreeLearningCrawler(object):
@@ -23,8 +25,12 @@ class PacktFreeLearningCrawler(object):
         self.create_session()
 
     def _read_conf_file(self):
-        with open(os.path.join(BASE_DIR, ".packt_user.cfg")) as conf:
-            return conf.readlines()[:2]
+        for base_dir in BASE_DIRS:
+            try:
+                with open(os.path.join(base_dir, ".packt_user.cfg")) as conf:
+                    return conf.readlines()[:2]
+            except IOError:
+                continue
 
     def create_session(self):
         data = {'email': self.user.rstrip(),
@@ -51,7 +57,6 @@ class PacktFreeLearningCrawler(object):
             return [book['title'].replace(' [eBook]', "") for book in books]
         except:
             raise ValueError("Login or Passowrd is incorrect")
-
 
     def link_free_book(self):
         clain_book_input = self.soup.find('div', {'class': 'dotd-main-book-form cf'})
